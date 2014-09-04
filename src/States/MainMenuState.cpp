@@ -31,6 +31,8 @@
 #include "../States/MainMenuState.h"
 #include "../States/SettingsMenuState.h"
 #include "../States/NewGameState.h"
+#include "../Engine/Graphics/Texture.h"
+#include "../Engine/Font.h"
 
 // Third party includes
 
@@ -104,6 +106,21 @@ void MainMenuState::init()
     auto exitButtonLabel = new TextArea(msg->message(14), 50, 20 + 41*5);
     exitButtonLabel->setFont(font4)->setWidth(150)->setHorizontalAlign(TextArea::HORIZONTAL_ALIGN_CENTER);
 
+    auto testRectangle = new Image(320, 200);
+    testRectangle->setX(160);
+    testRectangle->setY(140);
+    testRectangle->texture()->fill(0xddddddff);
+
+    auto testTextArea = new TextArea(170, 150);
+    testTextArea->setWidth(300);
+    testTextArea->setHeight(180);
+    testTextArea->setWordWrap(true);
+
+    auto testFont = new Font("font2.aaf", 0xff00ffff);
+    testTextArea->setFont(testFont);
+
+    testTextArea->setText("On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.");
+
 
 
     add(background);
@@ -125,6 +142,8 @@ void MainMenuState::init()
     add(creditsButtonLabel);
     add(exitButtonLabel);
 
+    add(testRectangle);
+    add(testTextArea);
 }
 
 void MainMenuState::think()
